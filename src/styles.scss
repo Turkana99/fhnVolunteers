@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+@import "styles/variables.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("./assets/fonts/Helvetica-Font/Helvetica-Bold.ttf") format("ttf"),
+    url("./assets/fonts/Helvetica-Font/Helvetica-BoldOblique.ttf") format
+      ("ttf"),
+    url("./assets/fonts/Helvetica-Font/helvetica-compressed-5871d14b6903a.otf")
+      format ("otf"),
+    url("./assets/fonts/Helvetica-Font/helvetica-light-587ebe5a59211.ttf")
+      format ("ttf"),
+    url("./assets/fonts/Helvetica-Font/Helvetica-Oblique.ttf") format ("ttf"),
+    url("./assets/fonts/Helvetica-Font/helvetica-rounded-bold-5871d05ead8de.otf")
+      format ("otf"),
+    url("./assets/fonts/Helvetica-Font/Helvetica.ttf") format ("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-green;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+mat-tab-group.user-details {
+  span.mdc-tab-indicator {
+    display: none;
+  }
+
+  .mat-mdc-tab:not(.mdc-tab--stacked) {
+    height: 46px;
+    border: 2px solid $dark-green-gradient;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+
+  .mat-mdc-tab-labels {
+    column-gap: 10px;
+    height: 100px;
+    align-items: center;
+    padding: 0 18px;
+  }
+
+  .mdc-tab__text-label {
+    color: #acc6c6;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: $tab-green;
+  }
+
+  .mat-mdc-tab:not(.mdc-tab--stacked).mdc-tab--active {
+    border: 2px solid $green;
+    box-shadow: 0 0 17px 2px $box-shadow;
+    -webkit-box-shadow: 0 0 17px 2px $box-shadow;
+    -moz-box-shadow: 0 0 17px 2px $box-shadow;
+  }
+
+  .mat-mdc-tab:hover .mdc-tab__text-label {
+    color: $tab-green;
+  }
+
+  .mat-mdc-tab .mdc-tab__ripple::before {
+    background-color: $tab-light-green !important;
+  }
+
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__ripple::before,
+  .mat-mdc-tab.mdc-tab--active .mat-ripple-element {
+    background-color: $tab-light-green !important;
+  }
+
+  .mat-mdc-tab .mdc-tab__ripple::before,
+  .mat-mdc-tab .mat-ripple-element {
+    background-color: $tab-light-green !important;
+  }
+
+  .mdc-tab__ripple::before,
+  .mat-ripple-element {
+    background-color: $tab-light-green !important;
+  }
+
+  .mat-mdc-tab-ripple {
+    border-radius: 12px !important;
+  }
+}

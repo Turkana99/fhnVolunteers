@@ -1,0 +1,128 @@
+@import "../../styles/variables.scss";
+
+.container-fluid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0px !important;
+  background: $green;
+  background: $login-bg-gradient;
+}
+.main-login {
+  width: 600px;
+  background-color: $light-green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 50px;
+  border-radius: 48px;
+  font-family: "Helvetica", sans-serif;
+}
+.toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+//Login input
+input[type="text"],
+input[type="password"] {
+  width: 100% !important;
+  height: 51px !important;
+  border: none;
+  outline: none;
+  margin: 10px 0px;
+  padding: 0px 15px;
+  border-radius: 12px;
+}
+input::placeholder {
+  color: $middle-green; /* Göstərilən rəngi təyin edin */
+  font-weight: bold; /* İtalik şrift təyin edin (istəyə bağlı) */
+  font-size: 16px; /* Şrift ölçüsünü təyin edin */
+  font-family: "Helvetica", sans-serif;
+}
+.password-input {
+  position: relative;
+}
+.password-input input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px 36px 12px 12px;
+  box-sizing: border-box;
+}
+.material-symbols-outlined {
+  position: absolute;
+  top: 32%;
+  right: 4%;
+  cursor: pointer;
+  color: lightgray;
+}
+.errorMessage p {
+  color: red !important;
+  font-family: "Helvetica", sans-serif;
+}
+
+.errorInputBorder {
+  border: 1px solid red !important;
+}
+
+//Daxil ol btn
+.mat-mdc-raised-button.mat-primary {
+  width: 100%;
+  background-color: white;
+  color: $dark-green; /* Göstərilən rəngi təyin edin */
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "Helvetica", sans-serif;
+  padding: 0px 20px !important;
+}
+
+.mat-mdc-button.mat-mdc-button-base,
+.mat-mdc-raised-button.mat-mdc-button-base,
+.mat-mdc-unelevated-button.mat-mdc-button-base,
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  height: 51px;
+  border-radius: 12px;
+}
+
+.disabled-button {
+  background-color: lightgray !important;
+  color: gray !important;
+}
+
+/* less than 390px */
+@media (max-width: 390px) {
+  .main-login {
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .password-input span {
+    top: 32%;
+    right: 10px;
+  }
+}
+
+/* less than 600px */
+@media (max-width: 600px) {
+  .main-login {
+    width: 100%;
+    padding: 40px 60px;
+  }
+
+  .password-input span {
+    top: 32%;
+    right: 10px;
+  }
+}
+
+/* less than 768px */
+@media (max-width: 768px) {
+  .password-input input[type="password"],
+  .password-input input[type="text"] {
+    padding: 12px 20px;
+  }
+}

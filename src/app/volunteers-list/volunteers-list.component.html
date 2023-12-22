@@ -1,0 +1,406 @@
+<div class="w-100 container-fluid my-4">
+  <div class="row px-5 mx-0">
+    <!--User Header-->
+    <div class="row col-lg-12 user-list-header mx-0 my-4">
+      <div class="col-lg-3">
+        <span>№&nbsp;Soyadı, adı, atasının adı</span>
+      </div>
+      <div class="col-lg-2">
+        <span>Müraciətin nəticəsi</span>
+      </div>
+      <div class="col-lg-2">
+        <span>Status</span>
+      </div>
+      <div class="col-lg-1">
+        <span>Cins</span>
+      </div>
+      <div class="col-lg-1">
+        <span>Doğum tarixi</span>
+      </div>
+      <div class="col-lg-1">
+        <span>FIN kod</span>
+      </div>
+      <div class="col-lg-2 d-flex justify-content-end">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="10.1923"
+            y="10.1923"
+            width="7.30769"
+            height="7.30769"
+            rx="2.5"
+            stroke="#F2F9F9"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3 0C1.34315 0 0 1.34315 0 3V5.30769C0 6.96455 1.34315 8.30769 3 8.30769H5.30769C6.96455 8.30769 8.30769 6.96455 8.30769 5.30769V3C8.30769 1.34315 6.96455 0 5.30769 0H3ZM6.74829 2.11471C6.84729 1.95081 6.80501 1.73847 6.65078 1.62499C6.47536 1.49592 6.22698 1.54538 6.11437 1.73179L3.92732 5.35247C3.77527 5.60419 3.43988 5.67096 3.20302 5.49668L2.12324 4.70221C1.94106 4.56816 1.68309 4.61952 1.56615 4.81313C1.46333 4.98334 1.50724 5.20387 1.66741 5.32172L3.40268 6.5985C3.63954 6.77278 3.97493 6.706 4.12698 6.45429L6.74829 2.11471Z"
+            fill="#F2F9F9"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.6923 0C11.0355 0 9.69232 1.34315 9.69232 3V5.30769C9.69232 6.96455 11.0355 8.30769 12.6923 8.30769H15C16.6569 8.30769 18 6.96455 18 5.30769V3C18 1.34315 16.6569 0 15 0H12.6923ZM16.4406 2.11471C16.5396 1.95081 16.4973 1.73847 16.3431 1.62499C16.1677 1.49592 15.9193 1.54538 15.8067 1.73179L13.6196 5.35247C13.4676 5.60419 13.1322 5.67096 12.8953 5.49668L11.8155 4.70221C11.6334 4.56816 11.3754 4.61952 11.2585 4.81313C11.1556 4.98334 11.1995 5.20387 11.3597 5.32172L13.095 6.5985C13.3319 6.77278 13.6672 6.706 13.8193 6.45429L16.4406 2.11471Z"
+            fill="#F2F9F9"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3 9.69226C1.34315 9.69226 0 11.0354 0 12.6923V15C0 16.6568 1.34315 18 3 18H5.30769C6.96455 18 8.30769 16.6568 8.30769 15V12.6923C8.30769 11.0354 6.96455 9.69226 5.30769 9.69226H3ZM6.74829 11.807C6.84729 11.6431 6.80501 11.4308 6.65078 11.3173C6.47536 11.1882 6.22698 11.2377 6.11437 11.4241L3.92732 15.0448C3.77527 15.2965 3.43988 15.3633 3.20302 15.189L2.12324 14.3945C1.94106 14.2605 1.68309 14.3118 1.56615 14.5054C1.46333 14.6757 1.50724 14.8962 1.66741 15.014L3.40268 16.2908C3.63954 16.4651 3.97493 16.3983 4.12698 16.1466L6.74829 11.807Z"
+            fill="#F2F9F9"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!--User List-->
+  <div class="row px-5 mx-0">
+    <div class="row col-lg-12 p-0 user-list-info mx-0">
+      <div class="ps-0 pe-2">
+        <ng-container *ngFor="let element of Volunteers">
+          <mat-expansion-panel class="expansion-panel p-0 mb-2">
+            <mat-expansion-panel-header class="px-4">
+              <mat-panel-title>
+                <div class="col-lg-3 ps-1">
+                  {{ element.id }} &nbsp;{{ element.name }}
+                </div>
+                <div
+                  class="col-lg-2 ps-3 work_status d-flex align-items-center"
+                >
+                  <!--Keçib-->
+                  <svg
+                    class="mb-2 me-2"
+                    *ngIf="element.work_status == 'Keçib'"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20 9.5L9.60986 20.61L3.60986 14.61L5 13L9.5 17.5L14.2047 12.6L18.7997 8L20 9.5Z"
+                      fill="#064E4E"
+                    />
+                  </svg>
+                  <!--Kecmeyib-->
+                  <svg
+                    class="me-2"
+                    *ngIf="element.work_status == 'Keçməyib'"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2.25C6.624 2.25 2.25 6.624 2.25 12C2.25 17.376 6.624 21.75 12 21.75C17.376 21.75 21.75 17.376 21.75 12C21.75 6.624 17.376 2.25 12 2.25ZM12 3.75C16.5652 3.75 20.25 7.43475 20.25 12C20.25 16.5652 16.5652 20.25 12 20.25C7.43475 20.25 3.75 16.5652 3.75 12C3.75 7.43475 7.43475 3.75 12 3.75ZM9.165 8.085L8.085 9.165L10.923 12L8.0865 14.835L9.1665 15.915L12 13.0778L14.835 15.9127L15.915 14.835L13.0778 12L15.9127 9.165L14.835 8.085L12 10.923L9.165 8.0865V8.085Z"
+                      fill="#064E4E"
+                    />
+                  </svg>
+                  <!--Gozleyir-->
+                  <svg
+                    class="mt-1 me-2"
+                    *ngIf="element.work_status == 'Gözləyir'"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 30 30"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g filter="url(#filter0_d_143_172)">
+                      <g clip-path="url(#clip0_143_172)">
+                        <path
+                          d="M15.0001 0.785767C17.0203 0.785767 18.9951 1.38482 20.6748 2.50718C22.3545 3.62954 23.6637 5.2248 24.4368 7.09121C25.2099 8.95763 25.4122 11.0114 25.0181 12.9928C24.624 14.9741 23.6511 16.7941 22.2227 18.2226C20.7942 19.6511 18.9741 20.624 16.9928 21.0181C15.0114 21.4122 12.9576 21.2099 11.0912 20.4368C9.2248 19.6637 7.62955 18.3545 6.50719 16.6748C5.38483 14.9951 4.78577 13.0202 4.78577 11.0001C4.78254 8.07401 5.90833 5.25953 7.92863 3.14291"
+                          stroke="#064E4E"
+                          stroke-width="1.71429"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M4.78577 3.92866L7.92862 3.14294L8.71434 6.2858M15.0001 5.50009V11.7858L19.0858 13.8287"
+                          stroke="#064E4E"
+                          stroke-width="1.71429"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                    <defs>
+                      <filter
+                        id="filter0_d_143_172"
+                        x="0"
+                        y="0"
+                        width="30"
+                        height="30"
+                        filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB"
+                      >
+                        <feFlood
+                          flood-opacity="0"
+                          result="BackgroundImageFix"
+                        />
+                        <feColorMatrix
+                          in="SourceAlpha"
+                          type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                          result="hardAlpha"
+                        />
+                        <feOffset dy="4" />
+                        <feGaussianBlur stdDeviation="2" />
+                        <feComposite in2="hardAlpha" operator="out" />
+                        <feColorMatrix
+                          type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in2="BackgroundImageFix"
+                          result="effect1_dropShadow_143_172"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in="SourceGraphic"
+                          in2="effect1_dropShadow_143_172"
+                          result="shape"
+                        />
+                      </filter>
+                      <clipPath id="clip0_143_172">
+                        <rect
+                          width="22"
+                          height="22"
+                          fill="white"
+                          transform="translate(4)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span class="ms-2"> {{ element.work_status }}</span>
+                </div>
+                <div class="col-lg-2 ps-4">{{ element.status }}</div>
+                <div class="col-lg-1 ps-4">{{ element.gender }}</div>
+                <div class="col-lg-1 ps-5">{{ element.date_of_birth }}</div>
+                <div class="col-lg-1 ps-5">{{ element.fin }}</div>
+                <div
+                  class="col-lg-2 d-flex justify-content-end align-items-center"
+                >
+                  <svg
+                    class="mx-2"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.75 8.99998H11.25V4.06029L8.78063 6.53061C8.63989 6.67134 8.44902 6.7504 8.25 6.7504C8.05098 6.7504 7.86011 6.67133 7.71938 6.5306C7.57864 6.38987 7.49958 6.199 7.49958 5.99998C7.49958 5.80096 7.57864 5.61009 7.71937 5.46935L11.4694 1.71935C11.539 1.64962 11.6217 1.5943 11.7128 1.55656C11.8038 1.51882 11.9014 1.49939 12 1.49939C12.0986 1.49939 12.1962 1.51882 12.2872 1.55656C12.3783 1.5943 12.461 1.64962 12.5306 1.71935L16.2806 5.46935C16.4214 5.61009 16.5004 5.80096 16.5004 5.99998C16.5004 6.199 16.4214 6.38987 16.2806 6.53061C16.1399 6.67134 15.949 6.7504 15.75 6.7504C15.551 6.7504 15.3601 6.67134 15.2194 6.53061L12.75 4.06029V8.99998ZM18.75 8.99998H12.75V12.75C12.75 12.9489 12.671 13.1397 12.5303 13.2803C12.3897 13.421 12.1989 13.5 12 13.5C11.8011 13.5 11.6103 13.421 11.4697 13.2803C11.329 13.1397 11.25 12.9489 11.25 12.75V8.99998H5.25C4.85218 8.99998 4.47064 9.15802 4.18934 9.43932C3.90804 9.72062 3.75 10.1022 3.75 10.5V19.5C3.75 19.8978 3.90804 20.2793 4.18934 20.5606C4.47064 20.8419 4.85218 21 5.25 21H18.75C19.1478 21 19.5294 20.8419 19.8107 20.5606C20.092 20.2793 20.25 19.8978 20.25 19.5V10.5C20.25 10.1022 20.092 9.72062 19.8107 9.43932C19.5294 9.15802 19.1478 8.99998 18.75 8.99998Z"
+                      fill="#064E4E"
+                    />
+                  </svg>
+                  <svg
+                    class="mx-3"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19.7134 12C19.7134 11.77 19.7031 11.55 19.6826 11.32L21.5955 9.91C22.0069 9.61 22.12 9.05 21.8629 8.61L19.9397 5.38C19.8164 5.16818 19.6169 5.00814 19.3796 4.93062C19.1423 4.8531 18.884 4.86356 18.6541 4.96L16.4429 5.87C16.0624 5.61 15.6613 5.38 15.2396 5.19L14.9414 2.88C14.8797 2.38 14.4374 2 13.9232 2H10.0871C9.56256 2 9.12032 2.38 9.05861 2.88L8.76036 5.19C8.33869 5.38 7.93759 5.61 7.55706 5.87L5.34588 4.96C4.87279 4.76 4.31742 4.94 4.06031 5.38L2.13709 8.62C1.87998 9.06 1.99311 9.61 2.40449 9.92L4.31742 11.33C4.27479 11.779 4.27479 12.231 4.31742 12.68L2.40449 14.09C1.99311 14.39 1.87998 14.95 2.13709 15.39L4.06031 18.62C4.31742 19.06 4.87279 19.24 5.34588 19.04L7.55706 18.13C7.93759 18.39 8.33869 18.62 8.76036 18.81L9.05861 21.12C9.12032 21.62 9.56256 22 10.0768 22H13.9129C14.4272 22 14.8694 21.62 14.9311 21.12L15.2294 18.81C15.651 18.62 16.0521 18.39 16.4327 18.13L18.6438 19.04C19.1169 19.24 19.6723 19.06 19.9294 18.62L21.8526 15.39C22.1097 14.95 21.9966 14.4 21.5852 14.09L19.6723 12.68C19.7031 12.45 19.7134 12.23 19.7134 12ZM12.0411 15.5C10.0562 15.5 8.44154 13.93 8.44154 12C8.44154 10.07 10.0562 8.5 12.0411 8.5C14.0261 8.5 15.6407 10.07 15.6407 12C15.6407 13.93 14.0261 15.5 12.0411 15.5Z"
+                      fill="#064E4E"
+                    />
+                  </svg>
+                  Ətraflı
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-tab-group dynamicHeight class="user-details">
+              <!--Sexsi melumatlar-->
+              <mat-tab label="Şəxsi məlumatlar">
+                <div class="row col-lg-12 info_detail mx-0 my-4">
+                  <div class="col-lg-9">
+                    <p><b>Cinsi: </b> {{ element.gender }}</p>
+                    <p>
+                      <b>Doğulduğu tarix (gün, ay, il): </b>
+                      {{ element.date_of_birth }}
+                    </p>
+                    <p>
+                      <b>Doğulduğu yer (ölkə, şəhər və ya rayon, kənd): </b>
+                      {{ element.date_of_place }}
+                    </p>
+                    <p><b>Ailə vəziyyəti: </b> {{ element.marital_status }}</p>
+                    <p><b>Milliyəti: </b> {{ element.nationality }}</p>
+                    <p><b>Vətəndaşlığı: </b> {{ element.citizenship }}</p>
+                    <p>
+                      <b>Şəxsiyyət vəsiqəsinin seriyası və nömrəsi: </b>
+                      {{ element.idCardNumber }}
+                    </p>
+                    <p>
+                      <b
+                        >Şəxsiyyət vəsiqəsinin verildiyi tarix (gün, ay, il):
+                      </b>
+                      {{ element.idCardGiveDate }}
+                    </p>
+                    <p>
+                      <b>Şəxsiyyət vəsiqəsini verən orqanın adı: </b>
+                      {{ element.idCardGivePlace }}
+                    </p>
+                    <p>
+                      <b>FIN kod (fərdi identifikasiya nömrəsi): </b>
+                      {{ element.fin }}
+                    </p>
+                    <p>
+                      <b
+                        >Qeydiyyatda olduğu ünvan (şəhər, rayon, küçə, ev və
+                        mənzil göstərilməklə):
+                      </b>
+                      {{ element.registeredAddress }}
+                    </p>
+                    <p class="m-0" *ngIf="element.actualAddress">
+                      <b
+                        >Faktiki yaşadığı ünvan (vətəndaş qeydiyyatda olduğu
+                        ünvanda yaşamırsa):
+                      </b>
+                      {{ element.actualAddress }}
+                    </p>
+                  </div>
+                  <div
+                    class="col-lg-3 vol_photo d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <p>Photo</p>
+                    <p>3x4</p>
+                  </div>
+                </div>
+              </mat-tab>
+              <!--Sexsi melumatlar-->
+              <mat-tab label="Şəxsi sənədlər">
+                <div class="row col-lg-12 info_detail m-0">
+                  <p>
+                    <b>Şəxsiyyət vəsiqəsinin sürəti: </b
+                    ><a href=""> Fayla bax</a>
+                  </p>
+                  <p><b>3x4 foto şəkil: </b><a href=""> Fayla bax</a></p>
+                  <p class="m-0"><b>CV: </b><a href=""> Fayla bax</a></p>
+                </div>
+              </mat-tab>
+              <!--Təhsil melumatları-->
+              <mat-tab label="Təhsil məlumatları">
+                <div class="row col-lg-12 info_detail m-0">
+                  <p>
+                    <b>Ümumi təhsil səviyyəsi: </b
+                    >{{ element.generalEducationStep }}
+                  </p>
+                  <p>
+                    <b>Peşə təhsil səviyyəsi: </b
+                    >{{ element.occupationEduStep }}
+                  </p>
+                  <p>
+                    <b>Ali təhsilin səviyyəsi: </b
+                    >{{ element.higherEducationStep }}
+                  </p>
+                  <p>
+                    <b>Bitirilməmişdirsə oxuduğu kurs: </b
+                    >{{ element.uniCourse }}
+                  </p>
+                  <p>
+                    <b>Ali təhsil müəssisəsinin adı və daxil olduğunuz il: </b
+                    >{{ element.higherEducationPlaceNameAndDate }}
+                  </p>
+                  <p>
+                    <b>Fakultə və ixtisası: </b>{{ element.facultySpeciality }}
+                  </p>
+                  <p>
+                    <b>Diplom olduğu təqdirdə verilmə tarixi: </b
+                    >{{ element.diplomaGiveDate }}
+                  </p>
+                  <div class="d-flex justify-content-start">
+                    <b
+                      >İxtisasartırma kurslarında və digər tədris tədbirlərində
+                      iştirakı:
+                    </b>
+                    <div>
+                      <ul
+                        class="d-flex flex-column m-0 ps-2"
+                        *ngFor="let elem of element.courseAndEvents"
+                      >
+                        <li>{{ elem }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <!--Emek fealiyyeti ve konulluluk melumatlari-->
+              <mat-tab label="Əmək fəaliyyəti və könüllülük məlumatları">
+                <div class="row col-lg-12 info_detail m-0">
+                  <p><b>Əmək fəaliyyəti: </b>{{ element.workStatus }}</p>
+                  <p>
+                    <b>İşləyirsə iş yeri, vəzifəsi və ümumi iş stajı: </b
+                    >{{ element.workPlacePositionStaj }}
+                  </p>
+                  <p>
+                    <b>Könüllülük təcrübəsi haqqında məlumat: </b
+                    >{{ element.volunteersInfo }}
+                  </p>
+                  <p *ngIf="element.volunteersAreaAndPeriod">
+                    <b>Könüllü olubsa sahə və dövr: </b
+                    >{{ element.volunteersAreaAndPeriod }}
+                  </p>
+                  <p>
+                    <b>Könüllü fəaliyyət üçün maraq göstərilən sahə: </b
+                    >{{ element.volunteersInterestArea }}
+                  </p>
+                  <p><b>"Fövqəladə hallar könüllüləri" Proqramına qoşulmaqda məqsədi: </b>{{ element.fhnAim }}</p>
+                </div>
+              </mat-tab>
+              <!--Xarici dil ve komputer bilikleri-->
+              <mat-tab label="Xarici dil və komputer bilikləri">
+                <div class="row col-lg-12 info_detail m-0">
+                  <!-- <div *ngFor="let el of getInnerObjectEntries()">
+                    <p><b>{{el[0]}} </b>{{el[1]}}</p>
+                  </div> -->
+                  <p><b>Xarici dil bilikləri (İngilis dili): </b> Yaxşı</p>
+                  <p><b>Xarici dil bilikləri (Rus dili): </b> Zəif</p>
+                  <p><b>Komputer bilikləri (Ofis proqramları): </b> Yaxşı</p>
+                  <p><b>Komputer bilikləri (Dizayn proqramları): </b> Zəif</p>
+                  <p>
+                    <b>Komputer bilikləri (Proqramlaşdırma dilləri): </b> Yoxdur
+                  </p>
+                </div>
+              </mat-tab>
+              <!--Elaqe melumatlari-->
+              <mat-tab label="Əlaqə məlumatları">
+                <div class="row col-lg-12 info_detail m-0">
+                  <div class="d-flex justify-content-start">
+                    <b>Elektron poçt ünvanı: </b>
+                    <div class="ps-2"><p *ngFor="let mail of element.mail"> {{ mail }}</p></div> 
+                  </div>
+                  <div class="d-flex justify-content-start">
+                    <b>Mobil telefonu: </b>
+                    <div class="ps-2">
+                      <p *ngFor="let mobil of element.mobilePhone">{{mobil}}</p>
+                    </div>
+                  </div>
+                  <p><b>Ev telefonu: </b>{{ element.phone }}</p>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-expansion-panel>
+        </ng-container>
+      </div>
+    </div>
+
+    <!--Pagination-->
+    <mat-paginator
+      class="my-3 p-0 m-0"
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</div>

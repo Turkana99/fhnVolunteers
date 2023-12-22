@@ -1,0 +1,83 @@
+<div class="container-fluid w-100">
+  <div class="row">
+    <div class="main-login">
+      <div class="logo w-100 d-flex justify-content-center">
+        <img src="../../assets/images/loginLogo2.png" alt="" />
+      </div>
+      <div class="login-form mt-4 w-100">
+        <form type="submit" [formGroup]="loginForm" (ngSubmit)="login()">
+          <input
+            type="text"
+            name="username"
+            formControlName="username"
+            placeholder="İstifadəçi adı"
+            [ngClass]="{
+              errorInputBorder:
+                loginForm.get('username')?.touched &&
+                loginForm.get('username')?.pristine
+            }"
+          />
+          <div class="errorMessage" *ngIf="!formSubmitted">
+            <p
+              *ngIf="
+                loginForm.get('username')?.touched &&
+                loginForm.get('username')?.pristine
+              "
+            >
+              *Bu xana boş ola bilməz!
+            </p>
+          </div>
+          <div class="errorMessage" *ngIf="formSubmitted">
+            <p *ngIf="loginForm.get('username')?.invalid">
+              *Zəhmət olmasa düzgün istfadəçi adı daxil edin!
+            </p>
+          </div>
+          <div class="password-input">
+            <input
+              type="{{ showPassword ? 'text' : 'password' }}"
+              id="password"
+              name="password"
+              formControlName="password"
+              placeholder="Şifrə"
+              [ngClass]="{
+                errorInputBorder:
+                  loginForm.get('password')?.touched &&
+                  loginForm.get('password')?.pristine
+              }"
+            />
+            <span
+              class="material-symbols-outlined"
+              (click)="togglePasswordVisibility()"
+              >{{ showPassword ? " visibility" : "visibility_off" }}
+            </span>
+          </div>
+          <div class="errorMessage" *ngIf="!formSubmitted">
+            <p
+              *ngIf="
+                loginForm.get('password')?.touched &&
+                loginForm.get('password')?.pristine
+              "
+            >
+              *Bu xana boş ola bilməz!
+            </p>
+          </div>
+          <div class="errorMessage" *ngIf="formSubmitted">
+            <p *ngIf="loginForm.get('password')?.invalid">
+              *Zəhmət olmasa düzgün şifrə daxil edin!
+            </p>
+          </div>
+          <button
+            mat-raised-button
+            class="mt-5"
+            color="primary"
+            (click)="login()"
+            [disabled]="loginForm.invalid"
+            [ngClass]="{ 'disabled-button': loginForm.invalid }"
+          >
+            Daxil ol
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+@import "../../styles/variables.scss";
+
+.container-fluid {
+  background-color: $light-green;
+  border-radius: 40px;
+  font-size: 14px;
+}
+
+.user-list-header {
+  background-color: $main-green;
+  color: white;
+  font-family: "Helvetica", sans-serif;
+  font-weight: bold;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  border-radius: 15px;
+}
+
+.mat-expansion-panel {
+  border-radius: 15px;
+}
+
+.user-list-info {
+  max-height: 914px !important;
+  overflow-y: auto;
+  font-size: 14px;
+}
+.user-list-info span {
+  font-size: 14px;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+mat-panel-title {
+  color: #064e4e !important;
+  font-family: "Helvetica", sans-serif;
+  font-weight: bold;
+}
+
+/* Change the scrollbar width, color, and corner radius */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust as needed */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-green; /* Adjust the color */
+  border-radius: 6px; /* Adjust the corner radius */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Adjust the color */
+}
+
+.info_detail {
+  border: 2px solid $green;
+  padding: 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  color: $green;
+  font-family: "Helvetica", sans-serif;
+}
+
+.vol_photo {
+  background-color: lightgray;
+}
+.vol_photo p {
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+  font-family: "Helvetica", sans-serif;
+}
+
+.info_detail a{
+  color: $green;
+}
+
+mat-paginator {
+  background-color: transparent !important;
+  padding: 0px;
+  margin: 0px;
+}
+.mat-mdc-paginator-container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.work_status i {
+  font-size: 30px;
+  font-weight: light !important;
+}

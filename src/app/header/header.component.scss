@@ -1,0 +1,68 @@
+@import "../../styles/variables.scss";
+
+.header {
+  background-color: $main-green;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  font-family: "Helvetica", sans-serif;
+}
+
+.menu-icon i {
+  color: white;
+  font-size: 22px;
+}
+
+.user-name h3 {
+  color: white;
+  font-size: 14px;
+}
+
+.user-icon i,
+svg {
+  color: white;
+  font-size: 20px;
+}
+
+@media (max-width: 992px) {
+  .menu-icon i {
+    font-size: 20px;
+  }
+
+  .user-name h3 {
+    font-size: 14px;
+  }
+
+  .user-icon i,
+  svg {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-icon i {
+    font-size: 18px;
+  }
+
+  .user-name h3 {
+    font-size: 12px;
+  }
+
+  .user-icon i,
+  svg {
+    font-size: 16px;
+  }
+}
+@media (max-width: 281px) {
+  .menu-icon i {
+    font-size: 18px;
+  }
+
+  .user-name h3 {
+    font-size: 14px;
+  }
+
+  .user-icon i,
+  svg {
+    font-size: 16px;
+  }
+}
