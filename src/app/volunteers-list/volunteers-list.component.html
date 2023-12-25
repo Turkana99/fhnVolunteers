@@ -75,7 +75,7 @@
                   <!--Keçib-->
                   <svg
                     class="mb-2 me-2"
-                    *ngIf="element.work_status == 'Keçib'"
+                    *ngIf="element.workingStatus == 'Keçib'"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -90,7 +90,7 @@
                   <!--Kecmeyib-->
                   <svg
                     class="me-2"
-                    *ngIf="element.work_status == 'Keçməyib'"
+                    *ngIf="element.workingStatus == 'Keçməyib'"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -105,7 +105,7 @@
                   <!--Gozleyir-->
                   <svg
                     class="mt-1 me-2"
-                    *ngIf="element.work_status == 'Gözləyir'"
+                    *ngIf="element.workingStatus == 'Gözləyir'"
                     width="24"
                     height="24"
                     viewBox="0 0 30 30"
@@ -179,11 +179,11 @@
                       </clipPath>
                     </defs>
                   </svg>
-                  <span class="ms-2"> {{ element.work_status }}</span>
+                  <span class="ms-2"> {{ element.workingStatus }}</span>
                 </div>
                 <div class="col-lg-2 ps-4">{{ element.status }}</div>
                 <div class="col-lg-1 ps-4">{{ element.gender }}</div>
-                <div class="col-lg-1 ps-5">{{ element.date_of_birth }}</div>
+                <div class="col-lg-1 ps-5">{{ element.dateOfBirth }}</div>
                 <div class="col-lg-1 ps-5">{{ element.fin }}</div>
                 <div
                   class="col-lg-2 d-flex justify-content-end align-items-center"
@@ -226,13 +226,13 @@
                     <p><b>Cinsi: </b> {{ element.gender }}</p>
                     <p>
                       <b>Doğulduğu tarix (gün, ay, il): </b>
-                      {{ element.date_of_birth }}
+                      {{ element.dateOfBirth }}
                     </p>
                     <p>
                       <b>Doğulduğu yer (ölkə, şəhər və ya rayon, kənd): </b>
-                      {{ element.date_of_place }}
+                      {{ element.dateOfPlace }}
                     </p>
-                    <p><b>Ailə vəziyyəti: </b> {{ element.marital_status }}</p>
+                    <p><b>Ailə vəziyyəti: </b> {{ element.maritalStatus }}</p>
                     <p><b>Milliyəti: </b> {{ element.nationality }}</p>
                     <p><b>Vətəndaşlığı: </b> {{ element.citizenship }}</p>
                     <p>
@@ -353,7 +353,12 @@
                     <b>Könüllü fəaliyyət üçün maraq göstərilən sahə: </b
                     >{{ element.volunteersInterestArea }}
                   </p>
-                  <p><b>"Fövqəladə hallar könüllüləri" Proqramına qoşulmaqda məqsədi: </b>{{ element.fhnAim }}</p>
+                  <p>
+                    <b
+                      >"Fövqəladə hallar könüllüləri" Proqramına qoşulmaqda
+                      məqsədi: </b
+                    >{{ element.fhnAim }}
+                  </p>
                 </div>
               </mat-tab>
               <!--Xarici dil ve komputer bilikleri-->
@@ -376,12 +381,16 @@
                 <div class="row col-lg-12 info_detail m-0">
                   <div class="d-flex justify-content-start">
                     <b>Elektron poçt ünvanı: </b>
-                    <div class="ps-2"><p *ngFor="let mail of element.mail"> {{ mail }}</p></div> 
+                    <div class="ps-2">
+                      <p *ngFor="let mail of element.mail">{{ mail }}</p>
+                    </div>
                   </div>
                   <div class="d-flex justify-content-start">
                     <b>Mobil telefonu: </b>
                     <div class="ps-2">
-                      <p *ngFor="let mobil of element.mobilePhone">{{mobil}}</p>
+                      <p *ngFor="let mobil of element.mobilePhone">
+                        {{ mobil }}
+                      </p>
                     </div>
                   </div>
                   <p><b>Ev telefonu: </b>{{ element.phone }}</p>
@@ -402,5 +411,183 @@
       aria-label="Select page"
     >
     </mat-paginator>
+  </div>
+
+  <!--Sidebar Filter-->
+  <div class="sidebar">
+    <form
+      id="custom-search-form"
+      class="form-search form-horizontal pull-right"
+      [formGroup]="filterForm"
+    >
+      <div class="row col-lg-12 py-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="input-append span12 ps-3">
+              <input
+                type="text"
+                class="search-query"
+                placeholder="Axtarış"
+                formControlName="search"
+              />
+              <button type="submit" class="btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu pt-2">
+            <button><i class="fa-solid fa-bars"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row col-lg-12 py-3 px-4">
+        <!--Muracietin tarixi-->
+        <select name="" id="" formControlName="applyDate">
+          <option value="" selected disabled>Müraciətin tarixi</option>
+          <option value="">25.12.2023</option>
+          <option value="">24.12.2023</option>
+          <option value="">23.12.2023</option>
+        </select>
+
+        <!--Muracietin neticesi-->
+        <select name="" id="" class="mt-4" formControlName="applyResult">
+          <option *ngFor="let status of work_status" value="status">
+            {{ status }}
+          </option>
+        </select>
+
+        <!--Gender-->
+        <select name="" id="" class="mt-4" formControlName="gender">
+          <option *ngFor="let gender of gender" value="status">
+            {{ gender }}
+          </option>
+        </select>
+
+        <!--Doğulduğu tarix-->
+        <select name="" id="" class="mt-4" formControlName="dateOfBirth">
+          <option value="">Doğulduğu tarix</option>
+          <option value="">25.12.2023</option>
+          <option value="">24.12.2023</option>
+          <option value="">23.12.2023</option>
+        </select>
+
+        <!--Vetendasligi-->
+        <select name="" id="" class="mt-4" formControlName="citizenship">
+          <option value="">Vətəndaşlığı</option>
+          <option value="">Azərbaycan</option>
+          <option value="">Rus</option>
+          <option value="">Turk</option>
+        </select>
+
+        <!--Qeydiyyatda olduğu (seher və ya rayon)-->
+        <select name="" id="" class="mt-4" formControlName="registeredAddress">
+          <option value="">Qeydiyyatda olduğu (seher və ya rayon)</option>
+          <option value="">Test</option>
+        </select>
+
+        <!--Faktiki yaşadığı ünvan-->
+        <select name="" id="" class="mt-4" formControlName="actualAddress">
+          <option value="">Faktiki yaşadığı ünvan</option>
+          <option value="">Test</option>
+        </select>
+
+        <!--Əmək fəaliyyəti-->
+        <select name="" id="" class="mt-4" formControlName="workPractise">
+          <option value="">Əmək fəaliyyəti</option>
+          <option value="">Test</option>
+        </select>
+
+        <!--Ali təhsil səviyyəsi-->
+        <select
+          name=""
+          id=""
+          class="mt-4"
+          formControlName="higherEducationStep"
+        >
+          <option value="">Ali təhsil səviyyəsi</option>
+          <option value="">Yoxdur</option>
+          <option value="">Bakalavr</option>
+          <option value="">Magistr</option>
+        </select>
+
+        <!--Bitirməmişdirsə oxuduğu kurs-->
+        <select name="" id="" class="mt-4" formControlName="uniCourse">
+          <option value="">Bitirməmişdirsə oxuduğu kurs</option>
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+          <option value="">4</option>
+        </select>
+
+        <!--Xarici dil bilikleri-->
+        <div class="row col-lg-12 m-0 p-0 pt-4">
+          <div class="col-lg-9 p-0">
+            <div class="me-2">
+              <!--Dil-->
+              <select
+                name=""
+                id=""
+                formControlName="langSkills"
+                class="custom-select"
+              >
+                <option value="">Xarici dil bilikləri</option>
+                <option value="">İngilis</option>
+                <option value="">Rus</option>
+                <option value="">Turk</option>
+              </select>
+            </div>
+          </div>
+          <!--Seviyye-->
+          <div class="col-lg-3 p-0">
+            <select name="" id="" formControlName="langLevel">
+              <option value="">Seçin</option>
+              <option value="">Əla</option>
+              <option value="">Yaxşı</option>
+              <option value="">Zəif</option>
+            </select>
+          </div>
+          <button class="add my-3">+</button>
+        </div>
+
+        <!--Komputer bilikleri-->
+        <div class="row col-lg-12 m-0 p-0 pt-4">
+          <div class="col-lg-9 p-0">
+            <div class="me-2">
+              <!--Komputer bilileri-->
+              <select
+                name=""
+                id=""
+                formControlName="kompSkills"
+                class="custom-select"
+              >
+                <option value="">Kompüter bilikləri</option>
+                <option value="">İngilis</option>
+                <option value="">Rus</option>
+                <option value="">Turk</option>
+              </select>
+            </div>
+          </div>
+          <!--Seviyye-->
+          <div class="col-lg-3 p-0">
+            <select name="" id="" formControlName="kompSkills">
+              <option value="">Seçin</option>
+              <option value="">Ofis proqramları</option>
+            </select>
+          </div>
+          <button class="add my-3">+</button>
+        </div>
+        <!--Könüllü fəaliyəti üçün maraq göstərilən sahə-->
+        <select name="" id="" formControlName="volunteersInterestArea" class="mt-4">
+          <option value="">Könüllü fəaliyəti üçün maraq göstərilən sahə</option>
+          <option value="">İlk yardım</option>
+          <option value="">İlkin psixoloji yardım</option>
+          <option value="">Maarifləndirmə</option>
+        </select>
+
+        <button class="result mt-5">Axtar</button>
+
+      </div>
+    </form>
   </div>
 </div>
