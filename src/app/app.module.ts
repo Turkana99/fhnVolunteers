@@ -20,6 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { MaterialModule } from './material.module';
+import { SidebarService } from './services/sidebar.service';
+import { LangSkillsService } from './services/langSkills.service';
+import { ProgramSkillsService } from './services/program-skills.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { MaterialModule } from './material.module';
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     AuthService,
     AuthGuard,
+    SidebarService,
+    LangSkillsService,
+    ProgramSkillsService
   ],
   bootstrap: [AppComponent],
 })

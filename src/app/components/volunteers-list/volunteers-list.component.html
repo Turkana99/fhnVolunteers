@@ -446,7 +446,6 @@
       </div>
 
       <div class="row col-lg-12 filterContent py-3 px-4">
-
         <!--Muracietin tarixi-->
         <div class="select-wrapper p-0 m-0">
           <select name="" id="" formControlName="applyDate">
@@ -459,7 +458,7 @@
 
         <!--Muracietin neticesi-->
         <div class="select-wrapper p-0 mx-0 mt-4">
-          <select name="" id=""  formControlName="applyResult">
+          <select name="" id="" formControlName="applyResult">
             <option *ngFor="let status of work_status" value="status">
               {{ status }}
             </option>
@@ -497,11 +496,7 @@
 
         <!--Qeydiyyatda olduğu (seher və ya rayon)-->
         <div class="select-wrapper p-0 mx-0 mt-4">
-          <select
-            name=""
-            id=""
-            formControlName="registeredAddress"
-          >
+          <select name="" id="" formControlName="registeredAddress">
             <option value="">Qeydiyyatda olduğu (seher və ya rayon)</option>
             <option value="">Test</option>
           </select>
@@ -525,11 +520,7 @@
 
         <!--Ali təhsil səviyyəsi-->
         <div class="select-wrapper p-0 mx-0 mt-4">
-          <select
-            name=""
-            id=""
-            formControlName="higherEducationStep"
-          >
+          <select name="" id="" formControlName="higherEducationStep">
             <option value="">Ali təhsil səviyyəsi</option>
             <option value="">Yoxdur</option>
             <option value="">Bakalavr</option>
@@ -549,70 +540,102 @@
         </div>
 
         <!--Xarici dil bilikleri-->
-        <div class="row col-lg-12 m-0 p-0 pt-4">
-          <div class="col-lg-9 p-0">
-            <div class="me-2 select-wrapper">
-              <!--Dil-->
-              <select
-                name=""
-                id=""
-                formControlName="langSkills"
-                class="custom-select"
-              >
-                <option value="">Xarici dil bilikləri</option>
-                <option value="">İngilis</option>
-                <option value="">Rus</option>
-                <option value="">Turk</option>
+        <div class="newLang m-0 p-0">
+          <div
+            class="row col-lg-12 m-0 p-0 pt-4"
+            *ngFor="let languageControl of languageControls; let i = index"
+          >
+            <div class="col-lg-9 p-0">
+              <div class="me-2 select-wrapper">
+                <!--Dil-->
+                <select
+                  name=""
+                  id=""
+                  formControlName="langSkills"
+                  class="custom-select"
+                >
+                  <option value="">Xarici dil bilikləri</option>
+                  <option value="">İngilis</option>
+                  <option value="">Rus</option>
+                  <option value="">Turk</option>
+                </select>
+              </div>
+            </div>
+            <!--Seviyye-->
+            <div class="col-lg-3 p-0 select-wrapper">
+              <select name="" id="" formControlName="langLevel">
+                <option value="">Seçin</option>
+                <option value="">Əla</option>
+                <option value="">Yaxşı</option>
+                <option value="">Zəif</option>
               </select>
             </div>
+            <button
+              class="add my-3"
+              *ngIf="i === languageControls.length - 1"
+              (click)="addLangSkill()"
+            >
+              +
+            </button>
           </div>
-          <!--Seviyye-->
-          <div class="col-lg-3 p-0 select-wrapper">
-            <select name="" id="" formControlName="langLevel">
-              <option value="">Seçin</option>
-              <option value="">Əla</option>
-              <option value="">Yaxşı</option>
-              <option value="">Zəif</option>
-            </select>
-          </div>
-          <button class="add my-3">+</button>
+          <button
+            class="remove"
+            *ngIf="languageControls.length > 1"
+            (click)="removeLangSkill()"
+          >
+            -
+          </button>
         </div>
 
         <!--Komputer bilikleri-->
-        <div class="row col-lg-12 m-0 p-0 pt-4">
-          <div class="col-lg-9 p-0">
-            <div class="me-2 select-wrapper">
-              <!--Komputer bilileri-->
-              <select
-                name=""
-                id=""
-                formControlName="kompSkills"
-                class="custom-select"
-              >
-                <option value="">Kompüter bilikləri</option>
-                <option value="">İngilis</option>
-                <option value="">Rus</option>
-                <option value="">Turk</option>
+        <div class="newProg m-0 p-0">
+          <div
+            class="row col-lg-12 m-0 p-0 pt-4"
+            *ngFor="let programControl of programControls; let i = index"
+          >
+            <div class="col-lg-9 p-0">
+              <div class="me-2 select-wrapper">
+                <!--Komputer bilileri-->
+                <select
+                  name=""
+                  id=""
+                  formControlName="kompSkills"
+                  class="custom-select"
+                >
+                  <option value="">Kompüter bilikləri</option>
+                  <option value="">İngilis</option>
+                  <option value="">Rus</option>
+                  <option value="">Turk</option>
+                </select>
+              </div>
+            </div>
+            <!--Seviyye-->
+            <div class="col-lg-3 p-0 select-wrapper">
+              <select name="" id="" formControlName="kompSkills">
+                <option value="">Seçin</option>
+                <option value="">Ofis proqramları</option>
               </select>
             </div>
+            <button
+              class="add my-3"
+              *ngIf="i === programControls.length - 1"
+              (click)="addProgSkill()"
+            >
+              +
+            </button>
           </div>
-          <!--Seviyye-->
-          <div class="col-lg-3 p-0 select-wrapper">
-            <select name="" id="" formControlName="kompSkills">
-              <option value="">Seçin</option>
-              <option value="">Ofis proqramları</option>
-            </select>
-          </div>
-          <button class="add my-3">+</button>
+          <button
+            class="remove"
+            *ngIf="programControls.length > 1"
+            (click)="removeProgSkill()"
+          >
+            -
+          </button>
         </div>
-
+        
         <!--Könüllü fəaliyəti üçün maraq göstərilən sahə-->
         <div class="select-wrapper p-0 mx-0 mt-4">
-          <select
-            name=""
-            id=""
-            formControlName="volunteersInterestArea"
-          >
+          <select name="" id="" formControlName="volunteersInterestArea">
             <option value="">
               Könüllü fəaliyəti üçün maraq göstərilən sahə
             </option>
@@ -621,6 +644,7 @@
             <option value="">Maarifləndirmə</option>
           </select>
         </div>
+
         <button class="result mt-5">Axtar</button>
       </div>
     </form>

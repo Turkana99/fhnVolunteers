@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { SidebarService } from 'src/app/services/sidebar.service';
+import { LangSkillsService } from 'src/app/services/langSkills.service';
 
 @Component({
   selector: 'app-volunteers-list',
@@ -62,7 +63,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 2,
       name: 'Səttarova Ayşən Arzu qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Gözləyir',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -110,7 +111,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 3,
       name: 'Məmmədova Aynura Aftandil qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Gözləyir',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -158,7 +159,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 4,
       name: 'Məmmədova Aydan Elçin qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Keçməyib',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -206,7 +207,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 5,
       name: 'Səttarova Ayşən Arzu qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Keçməyib',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -254,7 +255,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 6,
       name: 'Məmmədova Aydan Elçin qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Gözləyir',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -302,7 +303,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 7,
       name: 'Şəmmədli Aysun Vüqar qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Gözləyir',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -446,7 +447,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 10,
       name: 'Şəmmədli Aysun Vüqar qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Gözləyir',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -494,7 +495,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 11,
       name: 'Məmmədova Aydan Elçin qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Gözləyir',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -638,7 +639,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 14,
       name: 'Şəmmədli Aysun Vüqar qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Keçməyib',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -686,7 +687,7 @@ export class VolunteersListComponent implements OnInit {
     {
       id: 15,
       name: 'Məmmədova Aydan Elçin qızı',
-      workingStatus: 'Keçib',
+      workingStatus: 'Keçməyib',
       status: 'Aktiv könüllü',
       gender: 'Qadın',
       dateOfBirth: '08.10.2022',
@@ -830,7 +831,11 @@ export class VolunteersListComponent implements OnInit {
   ];
   isOpen = false;
   filterForm: FormGroup;
-  constructor(private fb: FormBuilder, private sidebarService: SidebarService) {
+  constructor(
+    private fb: FormBuilder,
+    private sidebarService: SidebarService,
+    private langSkillsService: LangSkillsService
+  ) {
     this.filterForm = this.fb.group({
       search: ['', Validators.required],
       applyDate: ['', Validators.required],
@@ -848,7 +853,8 @@ export class VolunteersListComponent implements OnInit {
       kompSkills: ['', Validators.required],
       kompLevel: ['', Validators.required],
       volunteersInterestArea: ['', Validators.required],
-      items: this.fb.array([]),
+      languageSkills: this.fb.array([]),
+      programSkills: this.fb.array([]),
     });
   }
   toggleSidebar() {
@@ -858,6 +864,48 @@ export class VolunteersListComponent implements OnInit {
     this.sidebarService.isOpen$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
+    // Initially add one language skill row
+    this.addLangSkill();
+    this.addProgSkill()
+  }
+  get languageControls() {
+    return (this.filterForm.get('languageSkills') as FormArray).controls;
+  }
+  get programControls() {
+    return (this.filterForm.get('programSkills') as FormArray).controls;
+  }
+  addLangSkill() {
+    const languageSkills = this.filterForm.get('languageSkills') as FormArray;
+    languageSkills.push(
+      this.fb.group({
+        langSkills: [''],
+        langLevel: [''],
+      })
+    );
+  }
+
+  removeLangSkill() {
+    const languageSkills = this.filterForm.get('languageSkills') as FormArray;
+    if (languageSkills.length > 1) {
+      languageSkills.removeAt(languageSkills.length - 1);
+    }
+  }
+
+  addProgSkill() {
+    const programSkills = this.filterForm.get('programSkills') as FormArray;
+    programSkills.push(
+      this.fb.group({
+        langSkills: [''],
+        langLevel: [''],
+      })
+    );
+  }
+
+  removeProgSkill() {
+    const programSkills = this.filterForm.get('programSkills') as FormArray;
+    if (programSkills.length > 1) {
+      programSkills.removeAt(programSkills.length - 1);
+    }
   }
 
 }
