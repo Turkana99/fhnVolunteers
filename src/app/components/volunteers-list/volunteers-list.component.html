@@ -415,7 +415,7 @@
   </div>
 
   <!--Sidebar Filter-->
-  <div [ngClass]="{ sidebarBg: isOpen }"></div>
+  <div class="overlay" [ngClass]="{ sidebarBg: isOpen }"></div>
   <div [ngClass]="{ open: isOpen }" class="sidebar">
     <form
       id="custom-search-form"
@@ -437,9 +437,9 @@
               </button>
             </div>
           </div>
-          <div class="menu pt-2">
+          <div class="menu">
             <button (click)="toggleSidebar()">
-              <i class="fa-solid fa-bars"></i>
+              <i class="fa-solid fa-bars" [ngClass]="{ open: isOpen }"></i>
             </button>
           </div>
         </div>
@@ -603,7 +603,9 @@
                   class="custom-select"
                 >
                   <option value="">Kompüter bilikləri</option>
-                  <option value="">Ofis proqramları</option>
+                  <option value="">İngilis</option>
+                  <option value="">Rus</option>
+                  <option value="">Turk</option>
                 </select>
               </div>
             </div>
@@ -611,9 +613,7 @@
             <div class="col-lg-3 p-0 select-wrapper">
               <select name="" id="" formControlName="kompSkills">
                 <option value="">Seçin</option>
-                <option value="">Əla</option>
-                <option value="">Yaxsı</option>
-                <option value="">Zəif</option>
+                <option value="">Ofis proqramları</option>
               </select>
             </div>
             <button
