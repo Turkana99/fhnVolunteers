@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .header {
   background-color: $main-green;
@@ -35,10 +35,10 @@ svg {
   font-size: 14px;
   color: $green;
   font-family: "Helvetica", sans-serif;
-  font-weight: bold!important;
+  font-weight: bold !important;
 }
-::ng-deep .mat-mdc-menu-panel button:hover{ 
-  color: white!important;
+::ng-deep .mat-mdc-menu-panel button:hover {
+  color: white !important;
 }
 
 .example-container {
@@ -58,13 +58,11 @@ svg {
   padding: 20px;
 }
 
-.toggle{
+.toggle {
   background-color: transparent;
   border: none;
   outline: none;
 }
-
-
 
 @media (max-width: 992px) {
   .menu-icon i {

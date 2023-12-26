@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VolunteersListComponent } from './volunteers-list/volunteers-list.component';
-import { AddNewVolunteersComponent } from './add-new-volunteers/add-new-volunteers.component';
-import { AuthGuard } from './auth.guard';
+import { VolunteersListComponent } from './components/volunteers-list/volunteers-list.component';
+import { AddNewVolunteersComponent } from './components/add-new-volunteers/add-new-volunteers.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/volunteers-list', pathMatch: 'full' },

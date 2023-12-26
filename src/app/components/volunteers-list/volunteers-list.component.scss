@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .container-fluid {
   background-color: $light-green;
@@ -96,7 +96,7 @@ mat-paginator {
   width: 542px;
   height: calc(100vh - 40px);
   z-index: 2;
-  display: none;
+  // display: none;
 }
 
 .form-search input[type="text"] {

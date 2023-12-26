@@ -10,15 +10,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { VolunteersListComponent } from './volunteers-list/volunteers-list.component';
-import { AddNewVolunteersComponent } from './add-new-volunteers/add-new-volunteers.component';
+import { LoginComponent } from './components/login/login.component';
+import { VolunteersListComponent } from './components/volunteers-list/volunteers-list.component';
+import { AddNewVolunteersComponent } from './components/add-new-volunteers/add-new-volunteers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
 import { MaterialModule } from './material.module';
 
 @NgModule({
