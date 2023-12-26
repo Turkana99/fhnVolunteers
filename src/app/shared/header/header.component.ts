@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { SidebarService } from 'src/app/services/sidebar.service';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +8,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Output() toggleSidebarEvent = new EventEmitter<boolean>();
+  constructor(private sidebarService: SidebarService,private authService: AuthService) {}
 
-  toggleSidebar(): void {
-    this.toggleSidebarEvent.emit(true); // Pass true to show the sidebar
+  toggleSidebar() {
+    this.sidebarService.toggleSidebar();
   }
+
+
+  logout() {
+    // Perform login logic
+    this.authService.logout();
+  }
+
 }

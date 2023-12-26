@@ -480,7 +480,6 @@
       <div class="user-name">
         <h3 class="user-name mb-0 pe-3">Turkana Mammadova</h3>
       </div>
-
       <button mat-button [matMenuTriggerFor]="menu">
         <div class="user-icon">
           <svg
@@ -520,7 +519,7 @@
             </div>
           </div>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logout()">
           <div class="d-flex justify-content-center align-items-center">
             <div class="pe-2">
               <span class="material-symbols-outlined pt-1"> logout </span>

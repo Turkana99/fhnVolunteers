@@ -58,6 +58,7 @@
       </div>
     </div>
   </div>
+
   <!--User List-->
   <div class="row px-5 mx-0">
     <div class="row col-lg-12 p-0 user-list-info mx-0">
@@ -414,7 +415,8 @@
   </div>
 
   <!--Sidebar Filter-->
-  <div class="sidebar">
+  <div [ngClass]="{ sidebarBg: isOpen }"></div>
+  <div [ngClass]="{ open: isOpen }" class="sidebar">
     <form
       id="custom-search-form"
       class="form-search form-horizontal pull-right"
@@ -436,94 +438,120 @@
             </div>
           </div>
           <div class="menu pt-2">
-            <button><i class="fa-solid fa-bars"></i></button>
+            <button (click)="toggleSidebar()">
+              <i class="fa-solid fa-bars"></i>
+            </button>
           </div>
         </div>
       </div>
 
-      <div class="row col-lg-12 py-3 px-4">
+      <div class="row col-lg-12 filterContent py-3 px-4">
+
         <!--Muracietin tarixi-->
-        <select name="" id="" formControlName="applyDate">
-          <option value="" selected disabled>Müraciətin tarixi</option>
-          <option value="">25.12.2023</option>
-          <option value="">24.12.2023</option>
-          <option value="">23.12.2023</option>
-        </select>
+        <div class="select-wrapper p-0 m-0">
+          <select name="" id="" formControlName="applyDate">
+            <option value="" selected disabled>Müraciətin tarixi</option>
+            <option value="">25.12.2023</option>
+            <option value="">24.12.2023</option>
+            <option value="">23.12.2023</option>
+          </select>
+        </div>
 
         <!--Muracietin neticesi-->
-        <select name="" id="" class="mt-4" formControlName="applyResult">
-          <option *ngFor="let status of work_status" value="status">
-            {{ status }}
-          </option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id=""  formControlName="applyResult">
+            <option *ngFor="let status of work_status" value="status">
+              {{ status }}
+            </option>
+          </select>
+        </div>
 
         <!--Gender-->
-        <select name="" id="" class="mt-4" formControlName="gender">
-          <option *ngFor="let gender of gender" value="status">
-            {{ gender }}
-          </option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id="" formControlName="gender">
+            <option *ngFor="let gender of gender" value="status">
+              {{ gender }}
+            </option>
+          </select>
+        </div>
 
         <!--Doğulduğu tarix-->
-        <select name="" id="" class="mt-4" formControlName="dateOfBirth">
-          <option value="">Doğulduğu tarix</option>
-          <option value="">25.12.2023</option>
-          <option value="">24.12.2023</option>
-          <option value="">23.12.2023</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id="" formControlName="dateOfBirth">
+            <option value="">Doğulduğu tarix</option>
+            <option value="">25.12.2023</option>
+            <option value="">24.12.2023</option>
+            <option value="">23.12.2023</option>
+          </select>
+        </div>
 
         <!--Vetendasligi-->
-        <select name="" id="" class="mt-4" formControlName="citizenship">
-          <option value="">Vətəndaşlığı</option>
-          <option value="">Azərbaycan</option>
-          <option value="">Rus</option>
-          <option value="">Turk</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id="" formControlName="citizenship">
+            <option value="">Vətəndaşlığı</option>
+            <option value="">Azərbaycan</option>
+            <option value="">Rus</option>
+            <option value="">Turk</option>
+          </select>
+        </div>
 
         <!--Qeydiyyatda olduğu (seher və ya rayon)-->
-        <select name="" id="" class="mt-4" formControlName="registeredAddress">
-          <option value="">Qeydiyyatda olduğu (seher və ya rayon)</option>
-          <option value="">Test</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select
+            name=""
+            id=""
+            formControlName="registeredAddress"
+          >
+            <option value="">Qeydiyyatda olduğu (seher və ya rayon)</option>
+            <option value="">Test</option>
+          </select>
+        </div>
 
         <!--Faktiki yaşadığı ünvan-->
-        <select name="" id="" class="mt-4" formControlName="actualAddress">
-          <option value="">Faktiki yaşadığı ünvan</option>
-          <option value="">Test</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id="" formControlName="actualAddress">
+            <option value="">Faktiki yaşadığı ünvan</option>
+            <option value="">Test</option>
+          </select>
+        </div>
 
         <!--Əmək fəaliyyəti-->
-        <select name="" id="" class="mt-4" formControlName="workPractise">
-          <option value="">Əmək fəaliyyəti</option>
-          <option value="">Test</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id="" formControlName="workPractise">
+            <option value="">Əmək fəaliyyəti</option>
+            <option value="">Test</option>
+          </select>
+        </div>
 
         <!--Ali təhsil səviyyəsi-->
-        <select
-          name=""
-          id=""
-          class="mt-4"
-          formControlName="higherEducationStep"
-        >
-          <option value="">Ali təhsil səviyyəsi</option>
-          <option value="">Yoxdur</option>
-          <option value="">Bakalavr</option>
-          <option value="">Magistr</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select
+            name=""
+            id=""
+            formControlName="higherEducationStep"
+          >
+            <option value="">Ali təhsil səviyyəsi</option>
+            <option value="">Yoxdur</option>
+            <option value="">Bakalavr</option>
+            <option value="">Magistr</option>
+          </select>
+        </div>
 
         <!--Bitirməmişdirsə oxuduğu kurs-->
-        <select name="" id="" class="mt-4" formControlName="uniCourse">
-          <option value="">Bitirməmişdirsə oxuduğu kurs</option>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-        </select>
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select name="" id="" formControlName="uniCourse">
+            <option value="">Bitirməmişdirsə oxuduğu kurs</option>
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+          </select>
+        </div>
 
         <!--Xarici dil bilikleri-->
         <div class="row col-lg-12 m-0 p-0 pt-4">
           <div class="col-lg-9 p-0">
-            <div class="me-2">
+            <div class="me-2 select-wrapper">
               <!--Dil-->
               <select
                 name=""
@@ -539,7 +567,7 @@
             </div>
           </div>
           <!--Seviyye-->
-          <div class="col-lg-3 p-0">
+          <div class="col-lg-3 p-0 select-wrapper">
             <select name="" id="" formControlName="langLevel">
               <option value="">Seçin</option>
               <option value="">Əla</option>
@@ -553,7 +581,7 @@
         <!--Komputer bilikleri-->
         <div class="row col-lg-12 m-0 p-0 pt-4">
           <div class="col-lg-9 p-0">
-            <div class="me-2">
+            <div class="me-2 select-wrapper">
               <!--Komputer bilileri-->
               <select
                 name=""
@@ -569,7 +597,7 @@
             </div>
           </div>
           <!--Seviyye-->
-          <div class="col-lg-3 p-0">
+          <div class="col-lg-3 p-0 select-wrapper">
             <select name="" id="" formControlName="kompSkills">
               <option value="">Seçin</option>
               <option value="">Ofis proqramları</option>
@@ -577,16 +605,23 @@
           </div>
           <button class="add my-3">+</button>
         </div>
+
         <!--Könüllü fəaliyəti üçün maraq göstərilən sahə-->
-        <select name="" id="" formControlName="volunteersInterestArea" class="mt-4">
-          <option value="">Könüllü fəaliyəti üçün maraq göstərilən sahə</option>
-          <option value="">İlk yardım</option>
-          <option value="">İlkin psixoloji yardım</option>
-          <option value="">Maarifləndirmə</option>
-        </select>
-
+        <div class="select-wrapper p-0 mx-0 mt-4">
+          <select
+            name=""
+            id=""
+            formControlName="volunteersInterestArea"
+          >
+            <option value="">
+              Könüllü fəaliyəti üçün maraq göstərilən sahə
+            </option>
+            <option value="">İlk yardım</option>
+            <option value="">İlkin psixoloji yardım</option>
+            <option value="">Maarifləndirmə</option>
+          </select>
+        </div>
         <button class="result mt-5">Axtar</button>
-
       </div>
     </form>
   </div>

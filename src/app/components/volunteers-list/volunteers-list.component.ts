@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray,Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { SidebarService } from 'src/app/services/sidebar.service';
 
 @Component({
   selector: 'app-volunteers-list',
   templateUrl: './volunteers-list.component.html',
   styleUrls: ['./volunteers-list.component.scss'],
 })
-export class VolunteersListComponent{
+export class VolunteersListComponent implements OnInit {
   work_status: any = ['Keçib', 'Keçməyib', 'Gözləyir'];
   gender: any = ['Kişi', 'Qadın'];
   Volunteers: any = [
@@ -827,13 +828,9 @@ export class VolunteersListComponent{
       phone: 'Yoxdur',
     },
   ];
-  isSidebarOpen = false;
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
-
+  isOpen = false;
   filterForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private sidebarService: SidebarService) {
     this.filterForm = this.fb.group({
       search: ['', Validators.required],
       applyDate: ['', Validators.required],
@@ -854,25 +851,13 @@ export class VolunteersListComponent{
       items: this.fb.array([]),
     });
   }
-
-  get items() {
-    return this.filterForm.get('items') as FormArray;
+  toggleSidebar() {
+    this.sidebarService.toggleSidebar();
+  }
+  ngOnInit() {
+    this.sidebarService.isOpen$.subscribe((isOpen) => {
+      this.isOpen = isOpen;
+    });
   }
 
-  addItem() {
-    this.items.push(this.fb.control(''));
-  }
-
-  removeItem(index: number) {
-    this.items.removeAt(index);
-  }
-
-  onSubmit() {
-    // Handle form submission
-    console.log(this.filterForm.value);
-  }
-
-  // getInnerObjectEntries() {
-  //   return Object.entries(this.Volunteers.langSkills);
-  // }
 }
