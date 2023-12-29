@@ -1,0 +1,98 @@
+<div class="w-100 container-fluid my-4">
+  <div class="row px-3 mx-0">
+    <div class="py-5">
+      <mat-stepper #stepper>
+        <!--Sexsi melumatlar-->
+        <mat-step
+          [stepControl]="firstFormGroup"
+          errorMessage="Qeyd olunmuş xanaları doldurun!"
+        >
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel >Şəxsi məlumatlar</ng-template>
+            <mat-form-field class="example-full-width mt-5 p-0">
+                <mat-label>First name</mat-label>
+                <input matInput>
+              </mat-form-field>
+            <div class="d-flex justify-content-end m-0">
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <!--Sexsi senedler-->
+        <mat-step
+          [stepControl]="secondFormGroup"
+          errorMessage="Qeyd olunmuş xanaları doldurun!"
+        >
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Şəxsi sənədlər</ng-template>
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input
+                matInput
+                placeholder="Ex. 1 Main St, New York, NY"
+                formControlName="secondCtrl"
+                required
+              />
+            </mat-form-field>
+            <div class="d-flex justify-content-end m-0">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <!--Tehsil melumatlari-->
+        <mat-step
+          [stepControl]="firstFormGroup"
+          errorMessage="Qeyd olunmuş xanaları doldurun!"
+        >
+          <ng-template matStepLabel>Təhsil məlumatları</ng-template>
+          <p>You are now done.</p>
+          <div class="d-flex justify-content-end">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+        <!--Emek fealiyyeti ve konulluluk melumatlar-->
+        <mat-step
+          [stepControl]="firstFormGroup"
+          errorMessage="Qeyd olunmuş xanaları doldurun!"
+        >
+          <ng-template matStepLabel
+            >Əmək fəaliyyəti və könüllülük məlumatları</ng-template
+          >
+          <p>You are now done.</p>
+          <div class="d-flex justify-content-end m-0">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+        <!--Xarici dil ve komputer bilikleri-->
+        <mat-step
+          [stepControl]="firstFormGroup"
+          errorMessage="Qeyd olunmuş xanaları doldurun!"
+        >
+          <ng-template matStepLabel
+            >Xarici dil və komputer bilikləri</ng-template
+          >
+          <p>You are now done.</p>
+          <div class="d-flex justify-content-end m-0">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+        <!--Elaqe melumatlari-->
+        <mat-step
+          [stepControl]="firstFormGroup"
+          errorMessage="Qeyd olunmuş xanaları doldurun!"
+        >
+          <ng-template matStepLabel>Əlaqə məlumatları</ng-template>
+          <p>You are now done.</p>
+          <div class="d-flex justify-content-end m-0">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </div>
+</div>

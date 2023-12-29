@@ -23,6 +23,7 @@ import { MaterialModule } from './material.module';
 import { SidebarService } from './services/sidebar.service';
 import { LangSkillsService } from './services/langSkills.service';
 import { ProgramSkillsService } from './services/program-skills.service';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ProgramSkillsService } from './services/program-skills.service';
   ],
   providers: [
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
+    { provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}},
     AuthService,
     AuthGuard,
     SidebarService,

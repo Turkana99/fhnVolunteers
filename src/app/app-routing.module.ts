@@ -6,8 +6,9 @@ import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/volunteers-list', pathMatch: 'full' },
-  { path: 'volunteers-list', component: VolunteersListComponent },
-  { path: 'add-new-volunteers', component: AddNewVolunteersComponent, canActivate: [AuthGuard]  },
+  { path: 'volunteers-list', component: VolunteersListComponent},
+  // { path: 'add-new-volunteers', component: AddNewVolunteersComponent, canActivate: [AuthGuard]  },
+  { path: 'add-new-volunteers', component: AddNewVolunteersComponent},
 ];
 
 @NgModule({
